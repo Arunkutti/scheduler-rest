@@ -19,6 +19,14 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
+## Swagger
+Once the spring boot application is up and running you can navigate to the below path to access the [swagger definition](http://localhost:8080/swagger-ui.html#/).
+
+## Java Doc
+You can checkout the java doc files that has been generated under the mentioned directory
+```~/scheduler-rest/doc/index.html```
+
+
 ## Copyright
 
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.
+Released under the Apache License 2.0. See the [LICENSE] file.
