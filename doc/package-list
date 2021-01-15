@@ -1,0 +1,7 @@
+com.iq.code
+com.iq.code.controller
+com.iq.code.exception
+com.iq.code.model
+com.iq.code.repository
+com.iq.code.resources
+com.iq.code.service

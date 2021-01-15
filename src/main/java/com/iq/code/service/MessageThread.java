@@ -2,6 +2,11 @@ package com.iq.code.service;
 
 import org.jboss.logging.Logger;
 
+/**
+ * A Thread class to print the message saved in DB.
+ * @author arunkumar.pushparaj
+ *
+ */
 public class MessageThread implements Runnable {
 
 	private String message;

@@ -24,6 +24,12 @@ import com.iq.code.model.Scheduler;
 import com.iq.code.repository.SchedulerRepository;
 import com.iq.code.resources.SchedulerResource;
 
+/**
+ * Scheduler service to save/update the scheduler in DB.
+ * 
+ * @author arunkumar.pushparaj
+ *
+ */
 @Service
 @Transactional
 public class ScheduleTaskService {
@@ -42,10 +48,7 @@ public class ScheduleTaskService {
 
 	/**
 	 * Schedule Task to be executed.
-	 * 
-	 * @param id
-	 * @param task
-	 * @param cron
+	 * @param scheduler - Scheduler object to be added in Jobs Map and TaskScheduler.
 	 */
 	private void addTaskToScheduler(Scheduler scheduler) {
 		Long id = scheduler.getId();
@@ -59,8 +62,7 @@ public class ScheduleTaskService {
 
 	/**
 	 * Remove scheduled task
-	 * 
-	 * @param id
+	 * @param id - Id to be removed from JobsMap.
 	 */
 	private void removeTaskFromScheduler(Long id) {
 		ScheduledFuture<?> scheduledTask = jobsMap.get(id);
@@ -73,8 +75,8 @@ public class ScheduleTaskService {
 	/**
 	 * Save/Update scheduler resource.
 	 * 
-	 * @param resource
-	 * @return
+	 * @param resource - Message and delivery time for scheduler
+	 * @return saved object in DB
 	 */
 	public SchedulerResource saveTask(SchedulerResource resource) {
 		Scheduler scheduler = new Scheduler();
@@ -108,11 +110,7 @@ public class ScheduleTaskService {
 	 * starts.
 	 */
 	@EventListener(ApplicationReadyEvent.class)
-	public void doAfterStartup() {
-		reInitAllSchedulerFromDB();
-	}
-
-	private void reInitAllSchedulerFromDB() {
+	protected void doAfterStartup() {
 		List<Scheduler> allSchedulers = schedulerRepo.findAll();
 		allSchedulers.forEach(u -> {
 			if (u.getDeliveryTime().before(new Date())) {

@@ -10,6 +10,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Scheduler Entity.Constructed using lombok
+ * @author arunkumar.pushparaj
+ *
+ */
 @Entity
 @Getter
 @Setter

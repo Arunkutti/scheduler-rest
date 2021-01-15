@@ -1,4 +1,4 @@
-package com.iq.code.test;
+package com.iq.code.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.iq.code.ScheduleBaseTest;
 import com.iq.code.resources.SchedulerResource;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -36,7 +37,7 @@ public class SchedulerControllerTests extends ScheduleBaseTest {
 		resource.setDeliveryTime("2022-01-15 23:02");
 		resource.setMessage("Hello World!");
 		mockMvc.perform(post("/schedule").contentType(MediaType.APPLICATION_JSON).content(asJsonString(resource)))
-				.andExpect(status().isAccepted()).andExpect(content().contentType("application/json;charset=UTF-8"));
+				.andExpect(status().isAccepted()).andExpect(content().contentType(MediaType.APPLICATION_JSON));
 
 	}
 	
@@ -45,7 +46,7 @@ public class SchedulerControllerTests extends ScheduleBaseTest {
 		SchedulerResource resource = new SchedulerResource();
 		resource.setMessage("Hello World!");
 		mockMvc.perform(post("/schedule").contentType(MediaType.APPLICATION_JSON).content(asJsonString(resource)))
-				.andExpect(status().isAccepted()).andExpect(content().contentType("application/json;charset=UTF-8"));
+				.andExpect(status().isBadRequest());
 
 	}
 

@@ -1,5 +1,10 @@
 package com.iq.code.exception;
 
+/**
+ * Exception class for invalid delivery time.Both format and negative time.
+ * @author arunkumar.pushparaj
+ *
+ */
 public class InvalidDeliveryTimeException extends RuntimeException {
 
 	/**

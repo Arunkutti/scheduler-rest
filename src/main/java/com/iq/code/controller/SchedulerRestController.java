@@ -13,13 +13,31 @@ import com.iq.code.exception.InvalidDeliveryTimeException;
 import com.iq.code.resources.SchedulerResource;
 import com.iq.code.service.ScheduleTaskService;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+/**
+ * Controller for handling scheduler endpoints
+ * @author arunkumar.pushparaj
+ *
+ */
 @RestController
 public class SchedulerRestController {
 
 	@Autowired
 	private ScheduleTaskService schedulerService;
 
-	@PostMapping(value = "/schedule", produces = { "application/json; charset=UTF-8" })
+	/**
+	 * Endpoint to save the schulder with message and delivery time.
+	 * @param resource - contains delivery time and message
+	 * @return - Saved scheduler reposne
+	 */
+	@PostMapping(value = "/schedule")
+	@ApiOperation(value = "schedule", nickname = "schedule")
+	@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error"),
+			@ApiResponse(code = 400, message = "Bad Request"),
+			@ApiResponse(code = 202, message = "Successful", response = SchedulerResource.class) })
 	public ResponseEntity<Object> index(@RequestBody @Valid SchedulerResource resource) {
 		try {
 			SchedulerResource response = schedulerService.saveTask(resource);
