@@ -9,6 +9,19 @@ For building and running the application you need:
 - [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - [Maven 3](https://maven.apache.org)
 
+## Building the application
+Use the below command to install the required libraries for scheduler-rest.
+
+```shell
+mvn clean install
+```
+
+##DB-Scripts
+Before running an application you have to create database for scheduler-rest from the scrpts folder.
+```~/scheduler-rest/scripts/init.sql```
+If you have already mySQL installed, you can use the same with changing the application.properties file.
+
+
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `de.codecentric.springbootsample.Application` class from your IDE.
@@ -19,6 +32,13 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
-## Copyright
+## Swagger
+Once the spring boot application is up and running you can navigate to the below path to access the [swagger definition](http://localhost:8080/swagger-ui.html#/).
 
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.
+## Java Doc
+You can checkout the java doc files that has been generated under the mentioned directory
+```~/scheduler-rest/doc/index.html```
+
+
+## Copyright
+Released under the Apache License 2.0. See the [LICENSE] file.
